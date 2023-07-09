@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { close, logo, menu } from '../assets';
 import { navLinks } from '../constants';
+import styles from '../style';
 const Navbar = () => {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState<boolean>(false);
   return (
     <nav className={`w-full flex py-6 justify-between items-center navbar fixed ${styles.paddingX} bg-primary border-b border-b-[#333] z-30`}>
       <a href="/">
@@ -11,20 +12,22 @@ const Navbar = () => {
 
       <ul className='list-none sm:flex hidden justify-end items-center flex-1'>
         {navLinks.map((nav, index) => (
+          <a href={`#${nav.id}`}>
           <li
             key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-[16px] text-white ${index === navLinks.length - 1 ? 'mr-0' : 'mr-10'} border-b-2 border-b-transparent hover:border-b-2 hover:border-b-dimWhite`}
+            className={`font-poppins font-normal cursor-pointer text-[16px] text-white ${index === navLinks.length - 1 ? 'mr-0' : 'mr-10'} border-b-4 border-b-transparent hover:border-b-4 hover:border-b-secondary`}
           >
-            <a href={`#${nav.id}`}>
+            
               {nav.title}
-            </a>
+            
           </li>
+          </a>
         ))}
       </ul>
 
       <div className='sm:hidden flex flex-1 justify-end items-center'>
         <img src={toggle ? close : menu} alt="menu"
-          className='w-[28px] h-[28px] object-contain'
+          className='w-[28px] h-[28px] object-contain cursor-pointer'
           onClick={() => setToggle(prevState => !prevState)}
         />
 
@@ -35,7 +38,7 @@ const Navbar = () => {
                 key={nav.id}
                 className={`font-poppins font-normal cursor-pointer text-[16px] text-white ${index === navLinks.length - 1 ? 'mr-0' : 'mb-4'}`}
               >
-                <a href={`#${nav.id}`}>
+                <a href={`#${nav.id}`} onClick={() => setToggle(prevState => !prevState)}>
                   {nav.title}
                 </a>
               </li>
