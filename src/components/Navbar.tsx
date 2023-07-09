@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { close, logo, menu } from '../assets';
 import { navLinks } from '../constants';
+import styles from '../style';
 const Navbar = () => {
-  const [toggle, setToggle] = useState<boolean>(false);
+  const [toggle, setToggle] = useState(false);
   return (
     <nav className={`w-full flex py-6 justify-between items-center navbar fixed ${styles.paddingX} bg-primary border-b border-b-[#333] z-30`}>
       <a href="/">
