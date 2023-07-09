@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { close, logo, menu } from '../assets';
 import { navLinks } from '../constants';
 const Navbar = () => {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState<boolean>(false);
   return (
     <nav className={`w-full flex py-6 justify-between items-center navbar fixed ${styles.paddingX} bg-primary border-b border-b-[#333] z-30`}>
       <a href="/">
